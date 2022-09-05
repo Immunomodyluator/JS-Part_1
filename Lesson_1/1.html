@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
-</head>
-<body>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
 Обязательное задание.
 
 Необходимо пользователя попросить ввести температуру в градусах Цельсия,
@@ -19,12 +19,14 @@
 
 Уточнение: пользователь всегда вводит корректное число.
 -->
-<script>
-  "use strict";
+    <script>
+      "use strict";
 
-  const cDegree = prompt('Введите температуру в градуса цельсия');
-  const fDegree = (9/5) * cDegree + 32;
-  alert(`Цельсий: ${cDegree}, Фаренгейт: ${fDegree}`)
-</script>
-</body>
+      const cDegree = Number.parseFloat(
+        prompt("Введите температуру в градуса цельсия")
+      );
+      const fDegree = (9 / 5) * cDegree + 32;
+      alert(`Цельсий: ${cDegree}, Фаренгейт: ${fDegree}`);
+    </script>
+  </body>
 </html>

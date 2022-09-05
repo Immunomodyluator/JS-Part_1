@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
-</head>
-<body>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
 Необязательное задание.
 
 Необходимо от пользователя получить число.
@@ -25,18 +25,19 @@
 
 Уточнение: пользователь всегда вводит корректное положительное целое число.
 -->
-<script>
-  "use strict";
+    <script>
+      "use strict";
 
-  // const number = prompt("Введите целое число");
-  let number = 232123324
-  const numberArr = []
-  for(let i = 0; i < 3; i++ ){
-    const newNumber = number%10
-    numberArr.push(newNumber)
-    number = Math.floor(number/10)
-  }
-  console.log(`В числе ${number} количество сотен: ${numberArr[2]}, десятков: ${numberArr[1]}, единиц: ${numberArr[0]}`)
-</script>
-</body>
+      let number = Number.parse(prompt("Введите целое число"));
+      const numberArr = [];
+      for (let i = 0; i < 3; i++) {
+        const newNumber = number % 10;
+        numberArr.push(newNumber);
+        number = Math.floor(number / 10);
+      }
+      console.log(
+        `В числе ${number} количество сотен: ${numberArr[2]},десятков: ${numberArr[1]}, единиц: ${numberArr[0]}`
+      );
+    </script>
+  </body>
 </html>
