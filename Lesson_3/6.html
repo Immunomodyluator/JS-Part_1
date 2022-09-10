@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Homework</title>
+  </head>
+  <body>
+    <!--
+Необязательное задание.
+
+Необходимо вывести горку в консоль (используя цикл for), как показано на
+рисунке, только у вашей горки должно быть 20 рядов, а не 5:
+
+```
+x
+xx
+xxx
+xxxx
+xxxxx
+```
+
+Примечание: в трех косых кавычках ``` показан пример кода для вывода, вам эти
+кавычки выводить не нужно.
+-->
+    <script>
+      "use strict";
+
+      let x = "";
+      for (let i = 0; i <= 20; i++) {
+        x += "x";
+        console.log(x);
+      }
+
+      //Ради интереса решил сделать ёлочку. Узнал, что есть метод repeat у
+      // строки
+      /*
+      let x = "x";
+      let space = " ";
+      for (let i = 1, j = 21; i <= 21, j >= 1; i += 2, j -= 2) {
+        const newRow = `${space.repeat(j / 2)}${x.repeat(i)}${space.repeat(
+          j / 2
+        )}`;
+        console.log(newRow);
+      }
+      */
+    </script>
+  </body>
+</html>
