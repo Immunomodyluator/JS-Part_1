@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-  <meta charset="UTF-8">
-  <title>Homework</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
-  <style>
-    .message {
-      width: 150px;
-      padding: 20px;
-      background: lightgoldenrodyellow;
-      border: 1px solid orange;
-      visibility: hidden;
-    }
-    .error {
-      border: 0.3rem solid red;
-    }
-  </style>
+    <meta charset='UTF-8' />
+    <title>Homework</title>
+    <link
+        rel='stylesheet'
+        href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css'
+    />
+    <style>
+        .message {
+            width: 150px;
+            padding: 20px;
+            background: lightgoldenrodyellow;
+            border: 1px solid orange;
+            visibility: hidden;
+        }
+
+        .error {
+            border: 0.3rem solid red;
+        }
+    </style>
 </head>
 <body>
 <!--
@@ -25,69 +29,103 @@
 стирать, код с решением задачи пишем под комментарием.
 -->
 
-<input id="from" type="text">
+<input id='from' type='text' />
 В инпуте написано: <span></span>
 
-<br>
+<br />
 
-<button class="messageBtn">Показать блок</button>
-<div class="message">
-  Привет :)
-</div>
+<button class='messageBtn'>Показать блок</button>
+<div class='message'>Привет :)</div>
 
-<br>
+<br />
 
 <form>
-  <label>
-    Первый инпут:
-    <input class="form-control" type="text">
-  </label>
-  <br>
-  <br>
-  <label>
-    Второй инпут:
-    <select class="form-control">
-      <option value=""></option>
-      <option value="1">Один</option>
-      <option value="2">Два</option>
-    </select>
-  </label>
-  <br>
-  <br>
-  <button>Отправить</button>
+    <label>
+        Первый инпут:
+        <input class='form-control' type='text' />
+    </label>
+    <br />
+    <br />
+    <label>
+        Второй инпут:
+        <select class='form-control'>
+            <option value=''></option>
+            <option value='1'>Один</option>
+            <option value='2'>Два</option>
+        </select>
+    </label>
+    <br />
+    <br />
+    <button>Отправить</button>
 </form>
 
 <script>
-  "use strict";
+    'use strict';
 
-  /*
-  1. При изменении значения в input с id="from", значение содержащееся в нем
-  должно моментально отображаться в span. То есть при печати в input'е тег span
-  также должен меняться.
-  */
+    /*
+1. При изменении значения в input с id="from", значение содержащееся в нем
+должно моментально отображаться в span. То есть при печати в input'е тег span
+также должен меняться.
+*/
 
+    const inputElFrom = document.querySelector('#from');
+    inputElFrom.addEventListener('input', () => {
+        document.querySelector('span').textContent = inputElFrom.value;
+    });
 
-  /*
-  2. При клике на кнопку с классом messageBtn необходимо элементу с классом
-  message:
-  1) добавить два класса: animate__animated и animate__fadeInLeftBig
-  2) поставить данному элементу стиль visibility в значение 'visible'.
-   */
+    /*
+2. При клике на кнопку с классом messageBtn необходимо элементу с классом
+message:
+1) добавить два класса: animate__animated и animate__fadeInLeftBig
+2) поставить данному элементу стиль visibility в значение 'visible'.
+*/
+    document
+        .querySelector('.messageBtn')
+        .addEventListener('click', () => {
+            const messageEl = document.querySelector('.message');
+            messageEl.classList.add(
+                'animate__animated',
+                'animate__fadeInLeftBig'
+            );
+            messageEl.style.visibility = 'visible';
+        });
 
+    /*
+3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
+форме. Если какое-либо поле не заполнено, форма не должна отправляться, также
+должны быть подсвечены незаполненные поля (необходимо поставить класс error
+незаполненным полям).
+Как только пользователь начинает заполнять какое-либо поле, необходимо,
+при вводе в данное поле, произвести проверку:
+Если поле пустое, необходимо данное поле подсветить (поставить класс error
+данному полю).
+Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
+*/
+    function valueCheck(input, e) {
+        if (input.value === '') {
+            input.classList.add('error');
+            e.preventDefault();
+        }
+        if (input.value !== '') {
+            input.classList.remove('error');
+        }
+    }
 
-  /*
-  3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
-  форме. Если какое-либо поле не заполнено, форма не должна отправляться, также
-  должны быть подсвечены незаполненные поля (необходимо поставить класс error
-  незаполненным полям).
-  Как только пользователь начинает заполнять какое-либо поле, необходимо,
-  при вводе в данное поле, произвести проверку:
-  Если поле пустое, необходимо данное поле подсветить (поставить класс error
-  данному полю).
-  Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
-   */
+    const input1 = document.querySelector('.form-control');
+    const input2 = document.querySelector('select');
+    document
+        .querySelector('form button')
+        .addEventListener('click', (e) => {
 
-
+            valueCheck(input1, e);
+            valueCheck(input2, e);
+            input1.addEventListener('input', () => {
+                valueCheck(input1, e);
+            });
+            input2.addEventListener('input', () => {
+                valueCheck(input2, e);
+            });
+        });
 </script>
 </body>
 </html>
